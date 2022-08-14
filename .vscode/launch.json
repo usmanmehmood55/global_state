@@ -5,7 +5,7 @@
         "type": "cppdbg",
         "request": "launch",
         "preLaunchTask": "cmake --build .\\build\\",
-        "program": "${workspaceRoot}\\build\\global_state.exe",
+        "program": "${workspaceRoot}\\build\\${workspaceFolderBasename}.exe",
         "args": [],
         "stopAtEntry": false,
         "cwd": "${workspaceRoot}",

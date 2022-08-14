@@ -23,7 +23,7 @@ typedef struct
  * to the struct itself directly.
  * 
  * Having such an arrangement allows use of middleware code to perform checks or to prevent 
- * access. 
+ * access.
  * 
  * @return port_state* pointer to the struct containing the global port_state
  */
@@ -148,4 +148,21 @@ void port_disconnect()
     port_state *_state = get_state();
     _state->access_counter++;
     _state->is_connected = false;
+}
+
+char * err_str(state_error_t err)
+{
+    switch (err)
+    {
+        case STATE_OK:
+            return "STATE_OK";
+        case STATE_ERR:
+            return "STATE_ERR";
+        case STATE_ACCESS_DENIED:
+            return "STATE_ACCESS_DENIED";
+        case STATE_PORT_BUSY:
+            return "STATE_PORT_BUSY";
+        default:
+            return "UNKNOWN";
+    }
 }

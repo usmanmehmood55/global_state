@@ -17,6 +17,8 @@ typedef enum
     STATE_PORT_BUSY     = 2,
 } state_error_t;
 
+char * err_str(state_error_t err);
+
 /**
  * @brief External code should be able to read this counter as is, so it will be decreased by one
  * since the act of accessing the counter itself increments it.

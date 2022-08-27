@@ -17,7 +17,18 @@ typedef enum
     STATE_PORT_BUSY     = 2,
 } state_error_t;
 
-char * err_str(state_error_t err);
+/**
+ * @brief Parses error and returns string
+ * 
+ */
+#define err_str(err)                                       \
+(                                                          \
+    (err == STATE_ERR)           ? "STATE_ERR"           : \
+    (err == STATE_OK)            ? "STATE_OK"            : \
+    (err == STATE_ACCESS_DENIED) ? "STATE_ACCESS_DENIED" : \
+    (err == STATE_PORT_BUSY)     ? "STATE_PORT_BUSY"     : \
+    "UNKNOWN"                                              \
+)
 
 /**
  * @brief External code should be able to read this counter as is, so it will be decreased by one

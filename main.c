@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdint.h>
 #include "context/context.h"
 
 /**
- * @brief Example code to demonstrate use of the context library along with uts error reporting.
+ * @brief Example code to demonstrate use of the context library along with its error reporting.
  * 
  * @return state_error_t STATE_OK if successful.
  */
@@ -11,7 +12,8 @@ state_error_t read_port(void)
     state_error_t err = STATE_OK;
 
     // Check if the port is open. If not, use the port_open function to open it.
-    if (!get_is_open())
+    bool is_open = get_is_open();
+    if (!is_open)
     {
         err = port_open();
 
@@ -24,7 +26,8 @@ state_error_t read_port(void)
     }
 
     // Check if the device is connected. If not, use the connect function to connect it.
-    if (!get_is_connected())
+    bool is_connected = get_is_connected();
+    if (!is_connected)
     {
         err = port_connect();
 

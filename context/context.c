@@ -34,8 +34,7 @@ static port_state * get_state()
 }
 
 /**
- * @brief External code should be able to read this counter as is, so it will be decreased by one
- * since the act of accessing the counter itself increments it.
+ * @brief External code should be able to read this counter as is.
  * 
  * @return uint16_t number of times the global state has been accessed
  */
@@ -148,21 +147,4 @@ void port_disconnect()
     port_state *_state = get_state();
     _state->access_counter++;
     _state->is_connected = false;
-}
-
-char * err_str(state_error_t err)
-{
-    switch (err)
-    {
-        case STATE_OK:
-            return "STATE_OK";
-        case STATE_ERR:
-            return "STATE_ERR";
-        case STATE_ACCESS_DENIED:
-            return "STATE_ACCESS_DENIED";
-        case STATE_PORT_BUSY:
-            return "STATE_PORT_BUSY";
-        default:
-            return "UNKNOWN";
-    }
 }
